@@ -23,10 +23,19 @@
 # Compiled Static libraries
 *.lai
 *.la
-*.a
-*.lib
+#*.lib
 
 # Executables
 *.exe
 *.out
 *.app
+
+# Cmake folders
+cmake-build*/
+build/
+
+# IDE and Text Editor Specific
+.idea/
+.vscode/
+
+
