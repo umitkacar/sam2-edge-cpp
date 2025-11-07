@@ -1,7 +1,23 @@
 
-# EdgeSAM - Onnxruntime - C++  
+# EdgeSAM - Onnxruntime - C++
+
+🚀 **Ultra-Modern AI-Powered Image Segmentation**
 
 This project implements the EdgeSAM (Segmentation-Anything Model) using ONNX Runtime and OpenCV in C++.
+
+## 🌐 Web Interface
+
+Visit our ultra-modern web interface by opening `index.html` in your browser to explore:
+- 🎨 Interactive demo with animations
+- ⚡ Feature showcase with glassmorphism design
+- 📚 Quick installation guide
+- 🎯 Technology stack overview
+
+**Features:**
+- Modern, responsive design
+- Smooth animations and transitions
+- Interactive UI elements
+- Dark theme with gradient effects
 
 ## Paper
 
