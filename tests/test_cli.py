@@ -20,9 +20,11 @@ class TestCLI:
         Args:
             capsys: Pytest capture fixture.
         """
-        with pytest.raises(SystemExit) as exc_info:
-            with patch("sys.argv", ["edgesam", "--version"]):
-                parse_args()
+        with (
+            pytest.raises(SystemExit) as exc_info,
+            patch("sys.argv", ["edgesam", "--version"]),
+        ):
+            parse_args()
 
         assert exc_info.value.code == 0
         captured = capsys.readouterr()
@@ -107,6 +109,12 @@ class TestCLI:
 
         # Mock segmenter instance
         mock_instance = MagicMock()
+        # Mock segment() to return dummy image and mask
+        import numpy as np
+
+        dummy_image = np.zeros((100, 100, 3), dtype=np.uint8)
+        dummy_mask = np.zeros((100, 100), dtype=np.float32)
+        mock_instance.segment.return_value = (dummy_image, dummy_mask)
         mock_segmenter.return_value = mock_instance
 
         with patch(

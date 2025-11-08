@@ -2,15 +2,18 @@
 
 from __future__ import annotations
 
-from pathlib import Path
 from typing import TYPE_CHECKING
 
+import cv2
 import numpy as np
 import pytest
 
 from edgesam_py.segmentation import EdgeSAMSegmenter
 
+
 if TYPE_CHECKING:
+    from pathlib import Path
+
     from numpy.typing import NDArray
 
 
@@ -150,8 +153,6 @@ class TestEdgeSAMIntegration:
             pytest.skip("Model files not found")
 
         # Save sample image
-        import cv2
-
         image_path = tmp_path / "test_image.png"
         cv2.imwrite(str(image_path), sample_image)
 

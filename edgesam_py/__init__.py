@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 
 from edgesam_py.segmentation import EdgeSAMSegmenter
 
+
 try:
     from edgesam_py._version import __version__
 except ImportError:
@@ -15,11 +16,6 @@ except ImportError:
 
 
 __all__ = [
-    "__version__",
     "EdgeSAMSegmenter",
+    "__version__",
 ]
-
-
-if TYPE_CHECKING:
-    # Type checking imports
-    pass

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import sys
+import traceback
 from pathlib import Path
 
 import numpy as np
@@ -95,7 +96,7 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def main() -> int:
+def main() -> int:  # noqa: C901
     """Main entry point.
 
     Returns:
@@ -108,11 +109,11 @@ def main() -> int:
         args.output = args.input.with_stem(f"{args.input.stem}_segmented")
 
     if args.verbose:
-        print(f"EdgeSAM v{__version__}")
-        print(f"Encoder: {args.encoder}")
-        print(f"Decoder: {args.decoder}")
-        print(f"Input: {args.input}")
-        print(f"Output: {args.output}")
+        print(f"EdgeSAM v{__version__}")  # noqa: T201
+        print(f"Encoder: {args.encoder}")  # noqa: T201
+        print(f"Decoder: {args.decoder}")  # noqa: T201
+        print(f"Input: {args.input}")  # noqa: T201
+        print(f"Output: {args.output}")  # noqa: T201
 
     # Determine execution providers
     providers = ["CPUExecutionProvider"]
@@ -123,7 +124,7 @@ def main() -> int:
             "CPUExecutionProvider",
         ]
         if args.verbose:
-            print("GPU acceleration enabled")
+            print("GPU acceleration enabled")  # noqa: T201
 
     try:
         # Initialize segmenter
@@ -134,7 +135,7 @@ def main() -> int:
         )
 
         if args.verbose:
-            print(f"Initialized: {segmenter}")
+            print(f"Initialized: {segmenter}")  # noqa: T201
 
         # Prepare prompt points
         point_coords = None
@@ -145,11 +146,11 @@ def main() -> int:
             point_labels = np.array([1.0], dtype=np.float32)
 
             if args.verbose:
-                print(f"Using prompt point: ({args.point_x}, {args.point_y})")
+                print(f"Using prompt point: ({args.point_x}, {args.point_y})")  # noqa: T201
 
         # Segment image
         if args.verbose:
-            print("Processing image...")
+            print("Processing image...")  # noqa: T201
 
         image, mask = segmenter.segment(
             image_path=args.input,
@@ -159,7 +160,7 @@ def main() -> int:
 
         # Save result
         if args.verbose:
-            print(f"Saving result to {args.output}...")
+            print(f"Saving result to {args.output}...")  # noqa: T201
 
         segmenter.save_result(
             image=image,
@@ -169,19 +170,17 @@ def main() -> int:
         )
 
         if args.verbose:
-            print("Done!")
+            print("Done!")  # noqa: T201
 
         return 0
 
     except FileNotFoundError as e:
-        print(f"Error: {e}", file=sys.stderr)
+        print(f"Error: {e}", file=sys.stderr)  # noqa: T201
         return 1
 
-    except Exception as e:  # noqa: BLE001
-        print(f"Unexpected error: {e}", file=sys.stderr)
+    except Exception as e:
+        print(f"Unexpected error: {e}", file=sys.stderr)  # noqa: T201
         if args.verbose:
-            import traceback
-
             traceback.print_exc()
         return 2
 

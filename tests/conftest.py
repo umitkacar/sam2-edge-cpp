@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 import numpy as np
 import pytest
 
+
 if TYPE_CHECKING:
     from numpy.typing import NDArray
 

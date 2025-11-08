@@ -3,12 +3,15 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 import cv2
 import numpy as np
 import onnxruntime as ort
-from numpy.typing import NDArray
+
+
+if TYPE_CHECKING:
+    from numpy.typing import NDArray
 
 
 class EdgeSAMSegmenter:

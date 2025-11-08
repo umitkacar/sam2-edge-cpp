@@ -179,3 +179,4 @@ dist-*/
 .pre-commit-cache/
 
 
+edgesam_py/_version.py
