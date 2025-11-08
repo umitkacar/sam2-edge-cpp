@@ -66,3 +66,214 @@ The application expects the following input format:
 ## Output
 
 The program outputs the segmented image with applied masks. Additional information like image resizing and processing steps are logged to the console.
+
+---
+
+## 🐍 Python Package
+
+EdgeSAM now includes a comprehensive Python package with modern development tooling!
+
+### Installation
+
+```bash
+# Install from source
+pip install -e .
+
+# Install with development dependencies
+pip install -e ".[dev]"
+
+# Install with all optional dependencies
+pip install -e ".[all]"
+```
+
+### Quick Start (Python)
+
+```python
+from edgesam_py import EdgeSAMSegmenter
+import numpy as np
+
+# Initialize segmenter
+segmenter = EdgeSAMSegmenter(
+    encoder_path="models/edge_sam_3x_encoder.onnx",
+    decoder_path="models/edge_sam_3x_decoder.onnx"
+)
+
+# Segment an image
+image, mask = segmenter.segment("path/to/image.png")
+
+# Save result
+segmenter.save_result(image, mask, "output.png")
+```
+
+### Command Line Interface
+
+```bash
+# Basic usage
+edgesam -i input.png
+
+# With custom prompt point
+edgesam -i input.png --point-x 512 --point-y 512
+
+# With GPU acceleration
+edgesam -i input.png --gpu
+
+# Full options
+edgesam -i input.png -o output.png \
+  -e models/encoder.onnx \
+  -d models/decoder.onnx \
+  --threshold 0.7 \
+  --verbose
+```
+
+## 🛠️ Development Tools
+
+This project uses ultra-modern Python development tooling:
+
+### Core Tools
+
+- **[Hatch](https://hatch.pypa.io/)** - Modern Python project manager
+- **[Ruff](https://github.com/astral-sh/ruff)** - Ultra-fast Python linter & formatter
+- **[Black](https://github.com/psf/black)** - Uncompromising code formatter
+- **[MyPy](https://mypy-lang.org/)** - Static type checker
+- **[Pytest](https://pytest.org/)** - Testing framework with coverage
+- **[Pre-commit](https://pre-commit.com/)** - Git hook framework
+
+### Quick Commands
+
+```bash
+# Setup development environment
+make dev
+
+# Run tests
+make test
+
+# Run tests with coverage
+make test-cov
+
+# Run linters
+make lint
+
+# Auto-format code
+make format
+
+# Run pre-commit hooks
+make pre-commit
+
+# Build C++ project
+make build-cpp
+
+# Build Python package
+make build
+
+# Clean build artifacts
+make clean
+
+# Run all CI checks locally
+make ci
+```
+
+### Using Hatch
+
+```bash
+# Run tests
+hatch run test:test
+
+# Run tests with coverage
+hatch run test:test-cov
+
+# Run linters
+hatch run lint:all
+
+# Format code
+hatch run lint:fmt
+
+# Type checking
+hatch run lint:typing
+```
+
+### Pre-commit Hooks
+
+Install pre-commit hooks:
+
+```bash
+pre-commit install
+```
+
+Run on all files:
+
+```bash
+pre-commit run --all-files
+```
+
+### Testing
+
+```bash
+# Run all tests
+pytest
+
+# Run with coverage
+pytest --cov
+
+# Run only unit tests
+pytest -m unit
+
+# Run only integration tests
+pytest -m integration
+
+# Run benchmarks
+pytest -m benchmark
+```
+
+## 📊 Code Quality
+
+- **Type Hints**: Full type coverage with MyPy
+- **Linting**: Comprehensive linting with Ruff
+- **Formatting**: Consistent style with Black
+- **Testing**: High test coverage with Pytest
+- **Security**: Automated security checks with Bandit
+- **Pre-commit**: Automated checks on every commit
+- **CI/CD**: GitHub Actions for continuous integration
+
+## 🏗️ Project Structure
+
+```
+edgeSAM-onnxruntime-cpp/
+├── edgesam_py/              # Python package
+│   ├── __init__.py
+│   ├── segmentation.py      # Core segmentation logic
+│   └── cli.py               # Command-line interface
+├── tests/                   # Test suite
+│   ├── conftest.py          # Pytest fixtures
+│   ├── test_segmentation.py
+│   └── test_cli.py
+├── src/                     # C++ source code
+├── include/                 # C++ headers
+├── models/                  # ONNX model files
+├── .github/workflows/       # CI/CD workflows
+├── pyproject.toml           # Python project configuration
+├── .pre-commit-config.yaml  # Pre-commit hooks
+├── Makefile                 # Development commands
+└── README.md
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Install development dependencies (`make dev`)
+4. Make your changes
+5. Run tests and linters (`make check`)
+6. Commit your changes (`git commit -m 'Add amazing feature'`)
+7. Push to the branch (`git push origin feature/amazing-feature`)
+8. Open a Pull Request
+
+All commits must pass:
+- ✅ Ruff linting
+- ✅ Black formatting
+- ✅ MyPy type checking
+- ✅ Pytest tests
+- ✅ Pre-commit hooks
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
