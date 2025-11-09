@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
+import numpy as np
 import pytest
 
 from edgesam_py import __version__
@@ -110,8 +111,6 @@ class TestCLI:
         # Mock segmenter instance
         mock_instance = MagicMock()
         # Mock segment() to return dummy image and mask
-        import numpy as np
-
         dummy_image = np.zeros((100, 100, 3), dtype=np.uint8)
         dummy_mask = np.zeros((100, 100), dtype=np.float32)
         mock_instance.segment.return_value = (dummy_image, dummy_mask)

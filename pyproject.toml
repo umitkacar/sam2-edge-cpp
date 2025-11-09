@@ -49,7 +49,6 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "black>=24.0.0",
     "coverage[toml]>=7.4.0",
     "ipython>=8.12.0",
     "mypy>=1.8.0",
@@ -57,7 +56,8 @@ dev = [
     "pytest>=8.0.0",
     "pytest-cov>=4.1.0",
     "pytest-xdist>=3.5.0",
-    "ruff>=0.2.0",
+    "ruff>=0.3.0",
+    "uv>=0.1.0",
 ]
 test = [
     "coverage[toml]>=7.4.0",
@@ -130,20 +130,19 @@ cov = [
 [tool.hatch.envs.lint]
 detached = true
 dependencies = [
-    "black>=24.0.0",
     "mypy>=1.8.0",
-    "ruff>=0.2.0",
+    "ruff>=0.3.0",
 ]
 
 [tool.hatch.envs.lint.scripts]
 typing = "mypy --install-types --non-interactive {args:edgesam_py tests}"
 style = [
     "ruff check {args:.}",
-    "black --check --diff {args:.}",
+    "ruff format --check {args:.}",
 ]
 fmt = [
-    "black {args:.}",
     "ruff check --fix {args:.}",
+    "ruff format {args:.}",
     "style",
 ]
 all = [
@@ -249,25 +248,6 @@ skip-magic-trailing-comma = false
 line-ending = "auto"
 docstring-code-format = true
 
-# ===== BLACK CONFIGURATION =====
-[tool.black]
-line-length = 100
-target-version = ['py39', 'py310', 'py311', 'py312']
-include = '\.pyi?$'
-extend-exclude = '''
-/(
-  # directories
-  \.eggs
-  | \.git
-  | \.hatch
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | build
-  | dist
-)/
-'''
-
 # ===== MYPY CONFIGURATION =====
 [tool.mypy]
 python_version = "3.9"
@@ -286,7 +266,7 @@ warn_unused_ignores = true
 warn_no_return = true
 warn_unreachable = true
 strict_equality = true
-strict_concatenate = true
+extra_checks = true
 show_error_codes = true
 show_column_numbers = true
 pretty = true
@@ -297,6 +277,8 @@ module = [
     "cv2.*",
     "onnxruntime.*",
     "PIL.*",
+    "numpy.*",
+    "pytest.*",
 ]
 ignore_missing_imports = true
 

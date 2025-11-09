@@ -23,47 +23,49 @@ namespace Ort {
 namespace Experimental {
 
 struct Session : Ort::Session {
-  Session(Env& env, std::basic_string<ORTCHAR_T>& model_path, SessionOptions& options)
-      : Ort::Session(env, model_path.data(), options){};
-  Session(Env& env, void* model_data, size_t model_data_length, SessionOptions& options)
-      : Ort::Session(env, model_data, model_data_length, options){};
+    Session(Env& env, std::basic_string<ORTCHAR_T>& model_path, SessionOptions& options)
+        : Ort::Session(env, model_path.data(), options){};
+    Session(Env& env, void* model_data, size_t model_data_length, SessionOptions& options)
+        : Ort::Session(env, model_data, model_data_length, options){};
 
-  // overloaded Run() with sensible defaults
-  std::vector<Ort::Value> Run(const std::vector<std::string>& input_names,
-                              const std::vector<Ort::Value>& input_values,
-                              const std::vector<std::string>& output_names,
-                              const RunOptions& run_options = RunOptions());
-  void Run(const std::vector<std::string>& input_names,
-           const std::vector<Ort::Value>& input_values,
-           const std::vector<std::string>& output_names,
-           std::vector<Ort::Value>& output_values,
-           const RunOptions& run_options = RunOptions());
+    // overloaded Run() with sensible defaults
+    std::vector<Ort::Value> Run(const std::vector<std::string>& input_names,
+                                const std::vector<Ort::Value>& input_values,
+                                const std::vector<std::string>& output_names,
+                                const RunOptions& run_options = RunOptions());
+    void Run(const std::vector<std::string>& input_names,
+             const std::vector<Ort::Value>& input_values,
+             const std::vector<std::string>& output_names, std::vector<Ort::Value>& output_values,
+             const RunOptions& run_options = RunOptions());
 
-  // convenience methods that simplify common lower-level API calls
-  std::vector<std::string> GetInputNames() const;
-  std::vector<std::string> GetOutputNames() const;
-  std::vector<std::string> GetOverridableInitializerNames() const;
+    // convenience methods that simplify common lower-level API calls
+    std::vector<std::string> GetInputNames() const;
+    std::vector<std::string> GetOutputNames() const;
+    std::vector<std::string> GetOverridableInitializerNames() const;
 
-  // NOTE: shape dimensions may have a negative value to indicate a symbolic/unknown dimension.
-  std::vector<std::vector<int64_t> > GetInputShapes() const;
-  std::vector<std::vector<int64_t> > GetOutputShapes() const;
-  std::vector<std::vector<int64_t> > GetOverridableInitializerShapes() const;
+    // NOTE: shape dimensions may have a negative value to indicate a symbolic/unknown dimension.
+    std::vector<std::vector<int64_t> > GetInputShapes() const;
+    std::vector<std::vector<int64_t> > GetOutputShapes() const;
+    std::vector<std::vector<int64_t> > GetOverridableInitializerShapes() const;
 };
 
 struct Value : Ort::Value {
-  Value(OrtValue* p)
-      : Ort::Value(p){};
+    Value(OrtValue* p) : Ort::Value(p){};
 
-  template <typename T>
-  static Ort::Value CreateTensor(T* p_data, size_t p_data_element_count, const std::vector<int64_t>& shape);
-  static Ort::Value CreateTensor(void* p_data, size_t p_data_byte_count, const std::vector<int64_t>& shape, ONNXTensorElementDataType type);
+    template <typename T>
+    static Ort::Value CreateTensor(T* p_data, size_t p_data_element_count,
+                                   const std::vector<int64_t>& shape);
+    static Ort::Value CreateTensor(void* p_data, size_t p_data_byte_count,
+                                   const std::vector<int64_t>& shape,
+                                   ONNXTensorElementDataType type);
 
-  template <typename T>
-  static Ort::Value CreateTensor(const std::vector<int64_t>& shape);
-  static Ort::Value CreateTensor(const std::vector<int64_t>& shape, ONNXTensorElementDataType type);
+    template <typename T>
+    static Ort::Value CreateTensor(const std::vector<int64_t>& shape);
+    static Ort::Value CreateTensor(const std::vector<int64_t>& shape,
+                                   ONNXTensorElementDataType type);
 };
 
-}
-}
+}  // namespace Experimental
+}  // namespace Ort
 
 #include "experimental_onnxruntime_cxx_inline.h"

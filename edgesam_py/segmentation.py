@@ -204,12 +204,40 @@ class EdgeSAMSegmenter:
         # Decode
         mask = self.decode(features, point_coords, point_labels)
 
+        # Extract mask data - handle different output shapes
+        # Constants for dimension checking
+        dim_4d = 4
+        dim_3d = 3
+        dim_2d = 2
+        batch_dim = 1
+
+        if mask.ndim == dim_4d and mask.shape[0] == batch_dim and mask.shape[1] == batch_dim:
+            # Expected shape: (1, 1, H, W)
+            mask_data = mask[0, 0]
+        elif mask.ndim == dim_3d and mask.shape[0] == batch_dim:
+            # Alternative shape: (1, H, W)
+            mask_data = mask[0]
+        elif mask.ndim == dim_2d:
+            # Already 2D: (H, W)
+            mask_data = mask
+        else:
+            # Fallback: squeeze to 2D
+            mask_data = np.squeeze(mask)
+
         # Resize mask to original size
-        mask_resized = cv2.resize(
-            mask[0, 0],
-            (original_size[1], original_size[0]),
-            interpolation=cv2.INTER_LINEAR,
-        )
+        if mask_data.ndim == dim_2d:
+            mask_resized = cv2.resize(
+                mask_data,
+                (original_size[1], original_size[0]),
+                interpolation=cv2.INTER_LINEAR,
+            )
+        else:
+            # If still not 2D, use first channel/element
+            mask_resized = cv2.resize(
+                mask_data.reshape(mask_data.shape[-2:]),
+                (original_size[1], original_size[0]),
+                interpolation=cv2.INTER_LINEAR,
+            )
 
         return image, mask_resized
 

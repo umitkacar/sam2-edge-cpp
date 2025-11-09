@@ -9,11 +9,10 @@ fi
 mkdir build
 
 # Change to the build directory
-cd build
+cd build || exit
 
 # Configure the project with CMake
 cmake ..
 
 # Compile the project
 make
-
