@@ -1,0 +1,189 @@
+# Pre-commit hooks configuration
+# See https://pre-commit.com for more information
+default_language_version:
+  python: python3.11
+
+repos:
+  # ===== GENERAL HOOKS =====
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: end-of-file-fixer
+      - id: check-yaml
+        args: [--unsafe]
+      - id: check-toml
+      - id: check-json
+      - id: check-added-large-files
+        args: [--maxkb=1000]
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+      - id: debug-statements
+      - id: detect-private-key
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: name-tests-test
+        args:
+          [--pytest-test-first]
+
+          # ===== RUFF - MODERN PYTHON LINTING & FORMATTING =====
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.3.4
+    hooks:
+      # Run the linter
+      - id: ruff
+        types_or: [python, pyi]
+        args:
+          - --fix
+          - --exit-non-zero-on-fix
+          - --show-fixes
+            # Run the formatter (replaces black)
+      - id: ruff-format
+        types_or:
+          [python, pyi]
+
+          # ===== MYPY TYPE CHECKING =====
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.9.0
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - types-requests
+          - types-PyYAML
+          - numpy
+        args:
+          - --config-file=pyproject.toml
+        files:
+          ^(edgesam_py|tests)/.*\.py$
+
+          # ===== PYTEST - RUN TESTS =====
+  - repo: local
+    hooks:
+      - id: pytest-check
+        name: pytest
+        entry: pytest
+        language: system
+        pass_filenames: false
+        args: [-xvs, --tb=short, --maxfail=1]
+        stages:
+          [push]
+
+          # ===== COVERAGE - CHECK TEST COVERAGE =====
+  - repo: local
+    hooks:
+      - id: coverage-check
+        name: coverage check
+        entry: bash -c 'coverage run -m pytest && coverage report --fail-under=70'
+        language: system
+        pass_filenames: false
+        stages:
+          [push]
+
+          # ===== SECURITY CHECKS =====
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.8
+    hooks:
+      - id: bandit
+        args:
+          - -c
+          - pyproject.toml
+        additional_dependencies: ["bandit[toml]"]
+        exclude:
+          ^tests/
+
+          # ===== UPGRADE PYTHON SYNTAX =====
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.15.2
+    hooks:
+      - id: pyupgrade
+        args:
+          [--py39-plus]
+
+          # ===== YAML FORMATTING =====
+  - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+    rev: v2.13.0
+    hooks:
+      - id: pretty-format-yaml
+        args:
+          - --autofix
+          - --indent=2
+          - --preserve-quotes
+
+            # ===== MARKDOWN LINTING =====
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.39.0
+    hooks:
+      - id: markdownlint
+        args:
+          [--fix]
+
+          # ===== SHELL SCRIPT CHECKING =====
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id:
+          shellcheck
+
+          # ===== C++ FORMATTING =====
+  - repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: v18.1.2
+    hooks:
+      - id: clang-format
+        types_or: [c++, c]
+        args:
+          [-i]
+
+          # ===== CMAKE FORMATTING =====
+  - repo: https://github.com/cheshirekow/cmake-format-precommit
+    rev: v0.6.13
+    hooks:
+      - id: cmake-format
+        args: [--in-place]
+      - id: cmake-lint
+        args:
+          [--disabled-codes=C0103]
+
+          # ===== JUPYTER NOTEBOOK CLEANING =====
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.7.1
+    hooks:
+      - id: nbstripout
+        args:
+          - --extra-keys
+          - metadata.language_info.version metadata.kernelspec cell.metadata.collapsed cell.metadata.scrolled cell.metadata.ExecuteTime
+
+            # ===== SECRETS DETECTION =====
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.4.0
+    hooks:
+      - id: detect-secrets
+        args:
+          - --baseline
+          - .secrets.baseline
+        exclude:
+          package-lock.json
+
+          # ===== PRETTIER FOR WEB FILES =====
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+        types_or:
+          [javascript, jsx, ts, tsx, json, css, scss, html, markdown, yaml]
+        exclude: ^(package-lock\.json|.*\.min\.(js|css))$
+
+ci:
+  autofix_commit_msg: |
+    [pre-commit.ci] auto fixes from pre-commit hooks
+
+    for more information, see https://pre-commit.ci
+  autofix_prs: true
+  autoupdate_branch: ""
+  autoupdate_commit_msg: "[pre-commit.ci] pre-commit autoupdate"
+  autoupdate_schedule: weekly
+  skip: [pytest-check, coverage-check]
+  submodules: false

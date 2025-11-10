@@ -1,349 +1,400 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EdgeSAM - Ultra-Modern AI Segmentation</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- Animated Background -->
     <div class="animated-background">
-        <div class="gradient-orb orb-1"></div>
-        <div class="gradient-orb orb-2"></div>
-        <div class="gradient-orb orb-3"></div>
+      <div class="gradient-orb orb-1"></div>
+      <div class="gradient-orb orb-2"></div>
+      <div class="gradient-orb orb-3"></div>
     </div>
 
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-layer-group"></i>
-                <span>EdgeSAM</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#features"><i class="fas fa-star"></i> Features</a></li>
-                <li><a href="#demo"><i class="fas fa-play-circle"></i> Demo</a></li>
-                <li><a href="#installation"><i class="fas fa-download"></i> Install</a></li>
-                <li><a href="#docs"><i class="fas fa-book"></i> Docs</a></li>
-                <li><a href="https://github.com" class="github-btn"><i class="fab fa-github"></i> GitHub</a></li>
-            </ul>
+      <div class="nav-container">
+        <div class="logo">
+          <i class="fas fa-layer-group"></i>
+          <span>EdgeSAM</span>
         </div>
+        <ul class="nav-links">
+          <li>
+            <a href="#features"><i class="fas fa-star"></i> Features</a>
+          </li>
+          <li>
+            <a href="#demo"><i class="fas fa-play-circle"></i> Demo</a>
+          </li>
+          <li>
+            <a href="#installation"><i class="fas fa-download"></i> Install</a>
+          </li>
+          <li>
+            <a href="#docs"><i class="fas fa-book"></i> Docs</a>
+          </li>
+          <li>
+            <a href="https://github.com" class="github-btn"
+              ><i class="fab fa-github"></i> GitHub</a
+            >
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="badge">
-                    <i class="fas fa-bolt"></i>
-                    <span>Powered by ONNX Runtime & OpenCV</span>
-                </div>
-                <h1 class="hero-title">
-                    <span class="gradient-text">EdgeSAM</span>
-                    <br>Next-Gen AI Segmentation
-                </h1>
-                <p class="hero-subtitle">
-                    Ultra-fast, on-device image segmentation powered by advanced AI.
-                    Built with C++ for maximum performance and efficiency.
-                </p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary">
-                        <i class="fas fa-rocket"></i>
-                        Get Started
-                    </button>
-                    <button class="btn btn-secondary">
-                        <i class="fas fa-code"></i>
-                        View Code
-                    </button>
-                </div>
-                <div class="stats">
-                    <div class="stat-item">
-                        <i class="fas fa-tachometer-alt"></i>
-                        <div>
-                            <h3>10x</h3>
-                            <p>Faster Processing</p>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-microchip"></i>
-                        <div>
-                            <h3>95%</h3>
-                            <p>CPU Efficiency</p>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-magic"></i>
-                        <div>
-                            <h3>100%</h3>
-                            <p>Accuracy</p>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="badge">
+            <i class="fas fa-bolt"></i>
+            <span>Powered by ONNX Runtime & OpenCV</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="gradient-text">EdgeSAM</span>
+            <br />Next-Gen AI Segmentation
+          </h1>
+          <p class="hero-subtitle">
+            Ultra-fast, on-device image segmentation powered by advanced AI.
+            Built with C++ for maximum performance and efficiency.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary">
+              <i class="fas fa-rocket"></i>
+              Get Started
+            </button>
+            <button class="btn btn-secondary">
+              <i class="fas fa-code"></i>
+              View Code
+            </button>
+          </div>
+          <div class="stats">
+            <div class="stat-item">
+              <i class="fas fa-tachometer-alt"></i>
+              <div>
+                <h3>10x</h3>
+                <p>Faster Processing</p>
+              </div>
             </div>
-            <div class="hero-visual">
-                <div class="floating-card card-1">
-                    <i class="fas fa-brain"></i>
-                    <span>AI Powered</span>
-                </div>
-                <div class="floating-card card-2">
-                    <i class="fas fa-bolt"></i>
-                    <span>Lightning Fast</span>
-                </div>
-                <div class="floating-card card-3">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Secure</span>
-                </div>
-                <div class="main-visual">
-                    <div class="visual-inner">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                </div>
+            <div class="stat-item">
+              <i class="fas fa-microchip"></i>
+              <div>
+                <h3>95%</h3>
+                <p>CPU Efficiency</p>
+              </div>
             </div>
+            <div class="stat-item">
+              <i class="fas fa-magic"></i>
+              <div>
+                <h3>100%</h3>
+                <p>Accuracy</p>
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="hero-visual">
+          <div class="floating-card card-1">
+            <i class="fas fa-brain"></i>
+            <span>AI Powered</span>
+          </div>
+          <div class="floating-card card-2">
+            <i class="fas fa-bolt"></i>
+            <span>Lightning Fast</span>
+          </div>
+          <div class="floating-card card-3">
+            <i class="fas fa-shield-alt"></i>
+            <span>Secure</span>
+          </div>
+          <div class="main-visual">
+            <div class="visual-inner">
+              <i class="fas fa-project-diagram"></i>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Features Section -->
     <section id="features" class="features">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <i class="fas fa-star"></i>
-                    Powerful Features
-                </h2>
-                <p class="section-subtitle">Everything you need for advanced image segmentation</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Blazing Fast</h3>
-                    <p>Optimized C++ implementation with ONNX Runtime for maximum performance</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>On-Device</h3>
-                    <p>Deploy directly on edge devices without cloud dependencies</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>AI-Powered</h3>
-                    <p>State-of-the-art EdgeSAM model for precise segmentation</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>Customizable</h3>
-                    <p>Flexible architecture for various segmentation tasks</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Open Source</h3>
-                    <p>Fully open-source with comprehensive documentation</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Scalable</h3>
-                    <p>Handle multiple images with efficient batch processing</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-star"></i>
+            Powerful Features
+          </h2>
+          <p class="section-subtitle">
+            Everything you need for advanced image segmentation
+          </p>
         </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h3>Blazing Fast</h3>
+            <p>
+              Optimized C++ implementation with ONNX Runtime for maximum
+              performance
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>On-Device</h3>
+            <p>Deploy directly on edge devices without cloud dependencies</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3>AI-Powered</h3>
+            <p>State-of-the-art EdgeSAM model for precise segmentation</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h3>Customizable</h3>
+            <p>Flexible architecture for various segmentation tasks</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>Open Source</h3>
+            <p>Fully open-source with comprehensive documentation</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Scalable</h3>
+            <p>Handle multiple images with efficient batch processing</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Demo Section -->
     <section id="demo" class="demo">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <i class="fas fa-play-circle"></i>
-                    See It In Action
-                </h2>
-                <p class="section-subtitle">Experience the power of EdgeSAM</p>
-            </div>
-            <div class="demo-container">
-                <div class="demo-visual">
-                    <div class="demo-box">
-                        <div class="demo-header">
-                            <i class="fas fa-image"></i>
-                            <span>Input Image</span>
-                        </div>
-                        <div class="demo-content">
-                            <i class="fas fa-upload"></i>
-                            <p>Upload your image</p>
-                        </div>
-                    </div>
-                    <div class="arrow-container">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                    <div class="demo-box">
-                        <div class="demo-header">
-                            <i class="fas fa-magic"></i>
-                            <span>Processing</span>
-                        </div>
-                        <div class="demo-content processing">
-                            <div class="spinner"></div>
-                            <p>AI Processing...</p>
-                        </div>
-                    </div>
-                    <div class="arrow-container">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                    <div class="demo-box">
-                        <div class="demo-header">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Result</span>
-                        </div>
-                        <div class="demo-content">
-                            <i class="fas fa-image"></i>
-                            <p>Segmented Output</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-play-circle"></i>
+            See It In Action
+          </h2>
+          <p class="section-subtitle">Experience the power of EdgeSAM</p>
         </div>
+        <div class="demo-container">
+          <div class="demo-visual">
+            <div class="demo-box">
+              <div class="demo-header">
+                <i class="fas fa-image"></i>
+                <span>Input Image</span>
+              </div>
+              <div class="demo-content">
+                <i class="fas fa-upload"></i>
+                <p>Upload your image</p>
+              </div>
+            </div>
+            <div class="arrow-container">
+              <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="demo-box">
+              <div class="demo-header">
+                <i class="fas fa-magic"></i>
+                <span>Processing</span>
+              </div>
+              <div class="demo-content processing">
+                <div class="spinner"></div>
+                <p>AI Processing...</p>
+              </div>
+            </div>
+            <div class="arrow-container">
+              <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="demo-box">
+              <div class="demo-header">
+                <i class="fas fa-check-circle"></i>
+                <span>Result</span>
+              </div>
+              <div class="demo-content">
+                <i class="fas fa-image"></i>
+                <p>Segmented Output</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Installation Section -->
     <section id="installation" class="installation">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <i class="fas fa-download"></i>
-                    Quick Installation
-                </h2>
-                <p class="section-subtitle">Get started in minutes</p>
-            </div>
-            <div class="install-grid">
-                <div class="install-step">
-                    <div class="step-number">1</div>
-                    <div class="step-icon">
-                        <i class="fab fa-git-alt"></i>
-                    </div>
-                    <h3>Clone Repository</h3>
-                    <div class="code-block">
-                        <code>git clone https://github.com/user/edgeSAM-onnxruntime-cpp.git</code>
-                        <button class="copy-btn" onclick="copyCode(this)">
-                            <i class="fas fa-copy"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="install-step">
-                    <div class="step-number">2</div>
-                    <div class="step-icon">
-                        <i class="fas fa-cog"></i>
-                    </div>
-                    <h3>Build Project</h3>
-                    <div class="code-block">
-                        <code>./build.sh</code>
-                        <button class="copy-btn" onclick="copyCode(this)">
-                            <i class="fas fa-copy"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="install-step">
-                    <div class="step-number">3</div>
-                    <div class="step-icon">
-                        <i class="fas fa-play"></i>
-                    </div>
-                    <h3>Run Application</h3>
-                    <div class="code-block">
-                        <code>./edgeSamOrtCpp ../images/xxx.png</code>
-                        <button class="copy-btn" onclick="copyCode(this)">
-                            <i class="fas fa-copy"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-download"></i>
+            Quick Installation
+          </h2>
+          <p class="section-subtitle">Get started in minutes</p>
         </div>
+        <div class="install-grid">
+          <div class="install-step">
+            <div class="step-number">1</div>
+            <div class="step-icon">
+              <i class="fab fa-git-alt"></i>
+            </div>
+            <h3>Clone Repository</h3>
+            <div class="code-block">
+              <code
+                >git clone
+                https://github.com/user/edgeSAM-onnxruntime-cpp.git</code
+              >
+              <button class="copy-btn" onclick="copyCode(this)">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+          </div>
+          <div class="install-step">
+            <div class="step-number">2</div>
+            <div class="step-icon">
+              <i class="fas fa-cog"></i>
+            </div>
+            <h3>Build Project</h3>
+            <div class="code-block">
+              <code>./build.sh</code>
+              <button class="copy-btn" onclick="copyCode(this)">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+          </div>
+          <div class="install-step">
+            <div class="step-number">3</div>
+            <div class="step-icon">
+              <i class="fas fa-play"></i>
+            </div>
+            <h3>Run Application</h3>
+            <div class="code-block">
+              <code>./edgeSamOrtCpp ../images/xxx.png</code>
+              <button class="copy-btn" onclick="copyCode(this)">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Technology Stack -->
     <section class="tech-stack">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <i class="fas fa-layer-group"></i>
-                    Technology Stack
-                </h2>
-                <p class="section-subtitle">Built with cutting-edge technologies</p>
-            </div>
-            <div class="tech-grid">
-                <div class="tech-item">
-                    <i class="fas fa-code"></i>
-                    <h4>C++17</h4>
-                </div>
-                <div class="tech-item">
-                    <i class="fas fa-brain"></i>
-                    <h4>ONNX Runtime</h4>
-                </div>
-                <div class="tech-item">
-                    <i class="fas fa-eye"></i>
-                    <h4>OpenCV 4.8</h4>
-                </div>
-                <div class="tech-item">
-                    <i class="fas fa-network-wired"></i>
-                    <h4>EdgeSAM Model</h4>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fas fa-layer-group"></i>
+            Technology Stack
+          </h2>
+          <p class="section-subtitle">Built with cutting-edge technologies</p>
         </div>
+        <div class="tech-grid">
+          <div class="tech-item">
+            <i class="fas fa-code"></i>
+            <h4>C++17</h4>
+          </div>
+          <div class="tech-item">
+            <i class="fas fa-brain"></i>
+            <h4>ONNX Runtime</h4>
+          </div>
+          <div class="tech-item">
+            <i class="fas fa-eye"></i>
+            <h4>OpenCV 4.8</h4>
+          </div>
+          <div class="tech-item">
+            <i class="fas fa-network-wired"></i>
+            <h4>EdgeSAM Model</h4>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3><i class="fas fa-layer-group"></i> EdgeSAM</h3>
-                    <p>Next-generation AI-powered image segmentation for edge devices.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-book"></i> Documentation</a></li>
-                        <li><a href="#"><i class="fas fa-graduation-cap"></i> Tutorials</a></li>
-                        <li><a href="#"><i class="fas fa-newspaper"></i> Blog</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Community</h4>
-                    <ul>
-                        <li><a href="#"><i class="fab fa-discord"></i> Discord</a></li>
-                        <li><a href="#"><i class="fab fa-stack-overflow"></i> Stack Overflow</a></li>
-                        <li><a href="#"><i class="fas fa-comments"></i> Forum</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-file-contract"></i> License</a></li>
-                        <li><a href="#"><i class="fas fa-shield-alt"></i> Privacy</a></li>
-                        <li><a href="#"><i class="fas fa-balance-scale"></i> Terms</a></li>
-                    </ul>
-                </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3><i class="fas fa-layer-group"></i> EdgeSAM</h3>
+            <p>
+              Next-generation AI-powered image segmentation for edge devices.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 EdgeSAM. Built with <i class="fas fa-heart"></i> for the AI community.</p>
-            </div>
+          </div>
+          <div class="footer-section">
+            <h4>Resources</h4>
+            <ul>
+              <li>
+                <a href="#"><i class="fas fa-book"></i> Documentation</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-graduation-cap"></i> Tutorials</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-newspaper"></i> Blog</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Community</h4>
+            <ul>
+              <li>
+                <a href="#"><i class="fab fa-discord"></i> Discord</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fab fa-stack-overflow"></i> Stack Overflow</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-comments"></i> Forum</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Legal</h4>
+            <ul>
+              <li>
+                <a href="#"><i class="fas fa-file-contract"></i> License</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-shield-alt"></i> Privacy</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-balance-scale"></i> Terms</a>
+              </li>
+            </ul>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 EdgeSAM. Built with <i class="fas fa-heart"></i> for the
+            AI community.
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
