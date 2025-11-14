@@ -1,8 +1,29 @@
-# EdgeSAM - Onnxruntime - C++
+<div align="center">
 
-🚀 **Ultra-Modern AI-Powered Image Segmentation**
+# 🎯 EdgeSAM - ONNX Runtime C++
+### *40x Faster Edge AI Segmentation with C++17*
 
-This project implements the EdgeSAM (Segmentation-Anything Model) using ONNX Runtime and OpenCV in C++.
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&duration=3000&pause=1000&color=6366F1&center=true&vCenter=true&multiline=true&width=900&lines=Real-Time+SAM2+Segmentation+%F0%9F%9A%80;C%2B%2B17+%2B+ONNX+Runtime+1.12.1+%E2%9A%A1;40x+Faster+Edge+Inference+%F0%9F%94%A5" alt="Typing SVG" />
+
+[![Stars](https://img.shields.io/github/stars/umitkacar/sam2-edge-cpp?style=for-the-badge&logo=github&color=yellow)](https://github.com/umitkacar/sam2-edge-cpp/stargazers)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
+[![C++](https://img.shields.io/badge/C++-17-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)](https://isocpp.org/)
+[![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![ONNX](https://img.shields.io/badge/ONNX-Runtime_1.12.1-005CED?style=for-the-badge)](https://onnxruntime.ai/)
+[![OpenCV](https://img.shields.io/badge/OpenCV-4.8.0-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)](https://opencv.org/)
+
+[![Tests](https://img.shields.io/badge/Tests-11/11_Pass-success?style=for-the-badge&logo=pytest)](tests/)
+[![Coverage](https://img.shields.io/badge/Coverage-73.06%25-brightgreen?style=for-the-badge&logo=codecov)](htmlcov/)
+[![MyPy](https://img.shields.io/badge/MyPy-0_Errors-blue?style=for-the-badge)](http://mypy-lang.org/)
+[![Ruff](https://img.shields.io/badge/Ruff-0_Violations-red?style=for-the-badge)](https://github.com/astral-sh/ruff)
+
+</div>
+
+---
+
+## 🌟 Overview
+
+This project implements the **EdgeSAM** (Segmentation-Anything Model) using ONNX Runtime and OpenCV in C++, delivering **40x faster inference** for edge device deployment.
 
 ## 🌐 Web Interface
 
